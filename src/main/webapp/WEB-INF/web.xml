@@ -3,15 +3,22 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+  <filter>
+    <filter-name>logFilter</filter-name>
+    <filter-class>guice.servlet.filter.LogFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>logFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
-  <servlet>
-    <servlet-name>BmiServlet</servlet-name>
-    <servlet-class>BmiServlet</servlet-class>
-  </servlet>
+  <listener>
+    <listener-class>guice.servlet.listner.ServletConfig</listener-class>
+  </listener>
 
-  <servlet-mapping>
-    <servlet-name>BmiServlet</servlet-name>
-    <url-pattern>/BmiServlet</url-pattern>
-  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>jsp/bmi/main.jsp</welcome-file>
+    <welcome-file>jsp/bmi/form.jsp</welcome-file>
+  </welcome-file-list>
 
 </web-app>
