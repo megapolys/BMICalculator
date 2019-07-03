@@ -2,23 +2,26 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
+<web-app
+        xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-app_3_0.xsd"
+        version="2.4">
+
+  <display-name>GuiceSevletDemo</display-name>
+
   <filter>
-    <filter-name>logFilter</filter-name>
-    <filter-class>guice.servlet.filter.LogFilter</filter-class>
+    <filter-name>guiceFilter</filter-name>
+    <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
   </filter>
+
   <filter-mapping>
-    <filter-name>logFilter</filter-name>
+    <filter-name>guiceFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
   <listener>
     <listener-class>guice.servlet.listner.ServletConfig</listener-class>
   </listener>
-
-  <welcome-file-list>
-    <welcome-file>jsp/bmi/main.jsp</welcome-file>
-    <welcome-file>jsp/bmi/form.jsp</welcome-file>
-  </welcome-file-list>
 
 </web-app>

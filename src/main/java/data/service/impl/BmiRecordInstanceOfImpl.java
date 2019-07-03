@@ -1,15 +1,11 @@
 package data.service.impl;
 
-import data.service.BmiRecordFactory;
+import data.service.BmiRecordInstanceOf;
 import data.valueobjects.BmiRecord;
 
 import java.util.Calendar;
 
-public class BmiRecordFactoryImpl implements BmiRecordFactory {
-
-    public BmiRecordFactoryImpl() {
-        System.out.println("Constructor BmiRecordFactoryImpl processing...");
-    }
+public class BmiRecordInstanceOfImpl implements BmiRecordInstanceOf {
 
     @Override
     public BmiRecord getBmiRecord(float weight, float height) {

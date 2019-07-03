@@ -5,9 +5,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class BmiRecordFactoryImplTest {
+public class BmiRecordInstanceOfImplTest {
 
-    private final BmiRecordFactoryImpl bmiRecordFactory = new BmiRecordFactoryImpl();
+    private final BmiRecordInstanceOfImpl bmiRecordFactory = new BmiRecordInstanceOfImpl();
     private final float delta = 0.01f;
 
     @Test

@@ -5,24 +5,27 @@ import com.google.inject.Injector;
 import data.service.BmiRecordService;
 
 import javax.inject.Singleton;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Singleton
 public class BmiServlet extends HttpServlet {
 
     @Inject
-    Injector injector;
+    private Injector injector;
 
     @Override
     protected void doGet(HttpServletRequest req,
-                         HttpServletResponse resp){
-        String weight = req.getParameter("weight");
-        String height = req.getParameter("height");
+                         HttpServletResponse resp) throws IOException, ServletException {
 
         BmiRecordService bmiRecordService = injector.getInstance(BmiRecordService.class);
-        System.out.format("Bmi record service\t%s\n", bmiRecordService);
+        String weight = req.getParameter("weight");
+        String height = req.getParameter("height");
         bmiRecordService.add(weight, height);
+        req.setAttribute("records", bmiRecordService.getBmiRecords());
+        req.getRequestDispatcher("/jsp/bmi/index.jsp").forward(req, resp);
     }
 }
