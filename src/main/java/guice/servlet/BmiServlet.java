@@ -1,7 +1,6 @@
 package guice.servlet;
 
 import com.google.inject.Inject;
-import com.google.inject.Injector;
 import data.service.BmiRecordService;
 
 import javax.inject.Singleton;
@@ -14,14 +13,17 @@ import java.io.IOException;
 @Singleton
 public class BmiServlet extends HttpServlet {
 
+    private BmiRecordService bmiRecordService;
+
     @Inject
-    private Injector injector;
+    public void setBmiRecordService(BmiRecordService bmiRecordService) {
+        this.bmiRecordService = bmiRecordService;
+    }
 
     @Override
     protected void doGet(HttpServletRequest req,
                          HttpServletResponse resp) throws IOException, ServletException {
 
-        BmiRecordService bmiRecordService = injector.getInstance(BmiRecordService.class);
         String weight = req.getParameter("weight");
         String height = req.getParameter("height");
         bmiRecordService.add(weight, height);
